@@ -1,0 +1,2434 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Watchirapakorn Meechai | Portfolio
+    </title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                "Segoe UI",
+                "Noto Sans Thai",
+                Arial,
+                sans-serif;
+
+            background: #080b10;
+
+            color: #e5e7eb;
+
+            line-height: 1.8;
+
+        }
+
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        nav {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 70px;
+
+            z-index: 1000;
+
+            background:
+                rgba(8, 11, 16, 0.90);
+
+            backdrop-filter:
+                blur(12px);
+
+            border-bottom:
+                1px solid #202833;
+
+        }
+
+
+
+        .nav-container {
+
+            max-width: 1100px;
+
+            height: 70px;
+
+            margin: auto;
+
+            padding: 0 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+        }
+
+
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
+        .logo {
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            color: #ffffff;
+
+        }
+
+
+
+        /* =====================================================
+           NAV RIGHT
+        ===================================================== */
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+        }
+
+
+
+        /* =====================================================
+           NAV LINKS
+        ===================================================== */
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+        }
+
+
+
+        .nav-links a {
+
+            color: #9ca3af;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            transition:
+                color 0.2s ease,
+                transform 0.2s ease;
+
+        }
+
+
+
+        .nav-links a:hover {
+
+            color: #60a5fa;
+
+            transform:
+                translateY(-1px);
+
+        }
+
+
+
+        /* =====================================================
+           LANGUAGE SWITCH
+        ===================================================== */
+
+        .language-switch {
+
+            display: flex;
+
+            align-items: center;
+
+            background: #111827;
+
+            border:
+                1px solid #334155;
+
+            border-radius: 30px;
+
+            padding: 4px;
+
+        }
+
+
+
+        .language-switch button {
+
+            border: none;
+
+            outline: none;
+
+            background: transparent;
+
+            color: #9ca3af;
+
+            padding:
+                7px 13px;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            font-size: 13px;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+
+        }
+
+
+
+        .language-switch button:hover {
+
+            color: #ffffff;
+
+        }
+
+
+
+        .language-switch
+        button.active {
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+        }
+
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .container {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding:
+                70px 25px 40px;
+
+        }
+
+
+
+        /* =====================================================
+           SECTIONS
+        ===================================================== */
+
+        section {
+
+            padding:
+                70px 0;
+
+            border-bottom:
+                1px solid #202833;
+
+            scroll-margin-top:
+                70px;
+
+        }
+
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height:
+                calc(100vh - 70px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding-top: 40px;
+
+        }
+
+
+
+        .hero-small {
+
+            color: #60a5fa;
+
+            font-size: 16px;
+
+            font-weight: 500;
+
+            margin-bottom: 12px;
+
+        }
+
+
+
+        .hero h1 {
+
+            font-size:
+                clamp(40px, 7vw, 72px);
+
+            line-height: 1.12;
+
+            color: #ffffff;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+
+        .hero h2 {
+
+            font-size: 24px;
+
+            font-weight: 500;
+
+            color: #94a3b8;
+
+            margin-bottom: 25px;
+
+        }
+
+
+
+        .hero p {
+
+            max-width: 780px;
+
+            color: #cbd5e1;
+
+            font-size: 17px;
+
+        }
+
+
+
+        /* =====================================================
+           SECTION TITLE
+        ===================================================== */
+
+        h2.section-title {
+
+            color: #ffffff;
+
+            font-size: 28px;
+
+            margin-bottom: 28px;
+
+        }
+
+
+
+        h2.section-title::before {
+
+            content: "▌";
+
+            color: #3b82f6;
+
+            margin-right: 10px;
+
+        }
+
+
+
+        /* =====================================================
+           TEXT
+        ===================================================== */
+
+        p {
+
+            color: #cbd5e1;
+
+        }
+
+
+
+        .highlight {
+
+            color: #60a5fa;
+
+            font-weight: 600;
+
+        }
+
+
+
+        .muted {
+
+            color: #94a3b8;
+
+        }
+
+
+
+        .blue {
+
+            color: #60a5fa;
+
+        }
+
+
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
+        .card {
+
+            background: #111827;
+
+            border:
+                1px solid #293445;
+
+            border-radius: 14px;
+
+            padding: 28px;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+
+        }
+
+
+
+        .card:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                #3b82f6;
+
+        }
+
+
+
+        .card h3 {
+
+            color: #ffffff;
+
+            font-size: 21px;
+
+            margin-bottom: 6px;
+
+        }
+
+
+
+        /* =====================================================
+           SKILLS
+        ===================================================== */
+
+        .skills-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(240px, 1fr)
+                );
+
+            gap: 18px;
+
+        }
+
+
+
+        .skill-card {
+
+            background: #111827;
+
+            border:
+                1px solid #293445;
+
+            border-radius: 12px;
+
+            padding: 23px;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+
+        }
+
+
+
+        .skill-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                #3b82f6;
+
+        }
+
+
+
+        .skill-card h3 {
+
+            color: #ffffff;
+
+            margin-bottom: 10px;
+
+            font-size: 19px;
+
+        }
+
+
+
+        .skill-card p {
+
+            color: #94a3b8;
+
+            font-size: 15px;
+
+        }
+
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        .project {
+
+            background: #111827;
+
+            border:
+                1px solid #293445;
+
+            border-left:
+                4px solid #3b82f6;
+
+            border-radius:
+                0 12px 12px 0;
+
+            padding: 26px;
+
+            margin-bottom: 20px;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+
+        }
+
+
+
+        .project:hover {
+
+            transform:
+                translateX(4px);
+
+            border-color:
+                #3b82f6;
+
+        }
+
+
+
+        .project h3 {
+
+            color: #ffffff;
+
+            font-size: 21px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+
+        /* =====================================================
+           TAGS
+        ===================================================== */
+
+        .tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+
+            margin-top: 18px;
+
+        }
+
+
+
+        .tag {
+
+            background: #172033;
+
+            border:
+                1px solid #334155;
+
+            color: #cbd5e1;
+
+            padding:
+                6px 13px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+        }
+
+
+
+        /* =====================================================
+           LANGUAGE CONTENT
+        ===================================================== */
+
+        .lang {
+
+            display: none;
+
+        }
+
+
+
+        .lang.active {
+
+            display: block;
+
+        }
+
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            text-align: center;
+
+            padding:
+                45px 0 20px;
+
+            color: #64748b;
+
+            font-size: 14px;
+
+        }
+
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+
+            nav {
+
+                height: 65px;
+
+            }
+
+
+            .nav-container {
+
+                height: 65px;
+
+                padding:
+                    0 16px;
+
+            }
+
+
+            .nav-links {
+
+                display: none;
+
+            }
+
+
+            .nav-right {
+
+                gap: 10px;
+
+            }
+
+
+            .container {
+
+                padding:
+                    65px 18px 30px;
+
+            }
+
+
+            section {
+
+                padding:
+                    55px 0;
+
+                scroll-margin-top:
+                    65px;
+
+            }
+
+
+            .hero {
+
+                min-height:
+                    calc(100vh - 65px);
+
+            }
+
+
+            .hero h1 {
+
+                font-size: 42px;
+
+            }
+
+
+            .hero h2 {
+
+                font-size: 19px;
+
+            }
+
+
+            .hero p {
+
+                font-size: 15px;
+
+            }
+
+
+            h2.section-title {
+
+                font-size: 25px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav>
+
+    <div class="nav-container">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+            WM.
+        </div>
+
+
+
+        <!-- RIGHT -->
+
+        <div class="nav-right">
+
+
+            <!-- MENU -->
+
+            <div class="nav-links">
+
+
+                <a
+                    href="javascript:void(0)"
+                    onclick="navigateSection('about')"
+                >
+
+                    <span
+                        id="navAbout"
+                    >
+                        About
+                    </span>
+
+                </a>
+
+
+
+                <a
+                    href="javascript:void(0)"
+                    onclick="navigateSection('education')"
+                >
+
+                    <span
+                        id="navEducation"
+                    >
+                        Education
+                    </span>
+
+                </a>
+
+
+
+                <a
+                    href="javascript:void(0)"
+                    onclick="navigateSection('skills')"
+                >
+
+                    <span
+                        id="navSkills"
+                    >
+                        Skills
+                    </span>
+
+                </a>
+
+
+
+                <a
+                    href="javascript:void(0)"
+                    onclick="navigateSection('projects')"
+                >
+
+                    <span
+                        id="navProjects"
+                    >
+                        Projects
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- LANGUAGE -->
+
+            <div class="language-switch">
+
+
+                <button
+                    id="enBtn"
+                    class="active"
+                    onclick="changeLanguage('en')"
+                >
+                    EN
+                </button>
+
+
+
+                <button
+                    id="thBtn"
+                    onclick="changeLanguage('th')"
+                >
+                    TH
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<div class="container">
+
+
+
+<!-- =========================================================
+     ENGLISH
+========================================================= -->
+
+<div
+    id="english"
+    class="lang active"
+>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+
+        <div class="hero-small">
+            Computer Engineering Student
+        </div>
+
+
+        <h1>
+
+            WATCHIRAPAKORN
+            <br>
+
+            MEECHAI
+
+        </h1>
+
+
+        <h2>
+            AI  ,Cybersecurity & Coding
+        </h2>
+
+
+        <p>
+
+            Computer Engineering student interested in
+
+            <span class="highlight">
+
+                Artificial Intelligence,
+                Cybersecurity,
+                Computer Vision,
+                and Human-Computer Interaction.
+
+            </span>
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- ABOUT -->
+
+    <section
+        id="about"
+    >
+
+        <h2 class="section-title">
+            About Me
+        </h2>
+
+
+        <p>
+
+            I am a third-year Computer Engineering
+            student at Rajamangala University of
+            Technology Isan, Sakon Nakhon Campus.
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            I am particularly interested in developing
+            practical technology using Artificial
+            Intelligence and computer-based control systems.
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            I enjoy experimenting with new technologies
+            and building projects that allow computers
+            to interact with humans in more natural
+            and efficient ways.
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- EDUCATION -->
+
+    <section
+        id="education"
+    >
+
+        <h2 class="section-title">
+            Education
+        </h2>
+
+
+        <div class="card">
+
+
+            <h3>
+
+                Rajamangala University
+                of Technology Isan
+
+            </h3>
+
+
+            <p class="blue">
+
+                Sakon Nakhon Campus
+
+            </p>
+
+
+            <p>
+
+                Faculty of Industrial
+                and Technology
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                Bachelor of Engineering —
+                Computer Engineering
+
+            </p>
+
+
+            <p class="muted">
+
+                2023 – Present
+
+            </p>
+
+
+            <p class="muted">
+
+                Expected Graduation: 2027
+
+            </p>
+
+
+            <p class="muted">
+
+                Cumulative GPA: 3.22
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- SKILLS -->
+
+    <section
+        id="skills"
+    >
+
+        <h2 class="section-title">
+            Skills
+        </h2>
+
+
+        <div class="skills-grid">
+
+
+            <!-- PROGRAMMING -->
+
+            <div class="skill-card">
+
+
+                <h3>
+                    Programming Languages
+                </h3>
+
+
+                <p>
+
+                    Python,
+                    C++,
+                    Dart,
+                    JavaScript,
+                    SQL,
+                    HTML,
+                    CSS
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- DEVELOPMENT -->
+
+            <div class="skill-card">
+
+
+                <h3>
+                    Development & Tools
+                </h3>
+
+
+                <p>
+
+                    API Integration,
+                    API Wrappers,
+                    Docker,
+                    Docker Compose
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- AI -->
+
+            <div class="skill-card">
+
+
+                <h3>
+                    AI & Computer Vision
+                </h3>
+
+
+                <p>
+
+                    Artificial Intelligence,
+                    AI-based Control,
+                    Computer Vision,
+                    Gesture Recognition
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- CREATIVE -->
+
+            <div class="skill-card">
+
+
+                <h3>
+                    Creative Tools
+                </h3>
+
+
+                <p>
+
+                    Onshape,
+                    Clip Studio Paint,
+                    Adobe Premiere Pro
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- PROJECTS -->
+
+    <section
+        id="projects"
+    >
+
+        <h2 class="section-title">
+            Projects & Experience
+        </h2>
+
+
+
+        <!-- CYBERSECURITY -->
+
+        <div class="project">
+
+
+            <h3>
+                Cybersecurity MOOC
+            </h3>
+
+
+            <p>
+
+                Completed a Cybersecurity MOOC as
+                one of my most valuable technical
+                learning experiences.
+
+                The course helped me develop a stronger
+                understanding of cybersecurity concepts,
+                security practices, and the importance
+                of protecting systems and digital information.
+
+            </p>
+
+
+            <div class="tags">
+
+
+                <span class="tag">
+                    Cybersecurity
+                </span>
+
+
+                <span class="tag">
+                    Security
+                </span>
+
+
+                <span class="tag">
+                    Network
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- VOICE -->
+
+        <div class="project">
+
+
+            <h3>
+                AI-Based Voice Control
+            </h3>
+
+
+            <p>
+
+                Developed an AI-based control concept
+                that allows users to interact with a
+                system using voice commands.
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                The system focuses on recognizing
+                user commands and translating them
+                into predefined actions, allowing
+                the system to be controlled through
+                natural voice interaction.
+
+            </p>
+
+
+            <div class="tags">
+
+
+                <span class="tag">
+                    Artificial Intelligence
+                </span>
+
+
+                <span class="tag">
+                    Voice Control
+                </span>
+
+
+                <span class="tag">
+                    Automation
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- FINGER -->
+
+        <div class="project">
+
+
+            <h3>
+                AI-Based Finger Control
+            </h3>
+
+
+            <p>
+
+                Developed a computer vision-based
+                control concept that uses hand and
+                finger gestures as an alternative
+                input method.
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                The goal is to reduce dependency on
+                traditional input devices such as
+                a mouse and keyboard.
+
+                This technology can potentially be
+                applied to robotics, drone control,
+                and other human-computer interaction systems.
+
+            </p>
+
+
+            <div class="tags">
+
+
+                <span class="tag">
+                    Computer Vision
+                </span>
+
+
+                <span class="tag">
+                    Gesture Recognition
+                </span>
+
+
+                <span class="tag">
+                    HCI
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- LANGUAGES -->
+
+    <section>
+
+
+        <h2 class="section-title">
+            Languages
+        </h2>
+
+
+        <div class="tags">
+
+
+            <span class="tag">
+                Thai — Native
+            </span>
+
+
+            <span class="tag">
+                English — CEFR A2
+            </span>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- CAREER -->
+
+    <section>
+
+
+        <h2 class="section-title">
+            Career Objective
+        </h2>
+
+
+        <p>
+
+            I am seeking an opportunity to gain
+            professional experience and apply my
+            knowledge in
+
+            <span class="highlight">
+
+                Artificial Intelligence,
+                Cybersecurity,
+                Software Development,
+                and Computer Engineering.
+
+            </span>
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            I am eager to learn new technologies,
+            improve my technical abilities, and
+            contribute to real-world projects while
+            growing as a computer engineer.
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- THANK YOU -->
+
+    <section>
+
+
+        <h2 class="section-title">
+            Thank You
+        </h2>
+
+
+        <p>
+
+            Thank you very much for taking the time
+            to review my portfolio.
+
+            I sincerely appreciate your consideration
+            and would be grateful for the opportunity
+            to discuss how my skills and interests
+            could contribute to your organization.
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            <strong>
+                Yours sincerely,
+            </strong>
+
+            <br>
+
+            Watchirapakorn Meechai
+
+        </p>
+
+
+    </section>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     THAI
+========================================================= -->
+
+<div
+    id="thai"
+    class="lang"
+>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+
+        <div class="hero-small">
+            นักศึกษาวิศวกรรมคอมพิวเตอร์
+        </div>
+
+
+        <h1>
+
+            วัชชิรปกรณ์
+            <br>
+
+            มีชัย
+
+        </h1>
+
+
+        <h2>
+            ผู้สนใจด้าน AI  ,Cybersecurity เเละ Coding
+        </h2>
+
+
+        <p>
+
+            นักศึกษาวิศวกรรมคอมพิวเตอร์
+            ที่มีความสนใจด้าน
+
+            <span class="highlight">
+
+                ปัญญาประดิษฐ์,
+                ความปลอดภัยทางไซเบอร์,
+                Computer Vision
+                และ Human-Computer Interaction
+
+            </span>
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- ABOUT -->
+
+    <section
+        id="about-th"
+    >
+
+        <h2 class="section-title">
+            เกี่ยวกับผม
+        </h2>
+
+
+        <p>
+
+            ผมเป็นนักศึกษาชั้นปีที่ 3
+            สาขาวิศวกรรมคอมพิวเตอร์
+            มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน
+            วิทยาเขตสกลนคร
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            ผมมีความสนใจเป็นพิเศษในการพัฒนา
+            เทคโนโลยีที่นำปัญญาประดิษฐ์มาใช้
+            ร่วมกับระบบควบคุมและการประมวลผลข้อมูล
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            ผมชอบทดลองเทคโนโลยีใหม่ ๆ
+            และสร้างโปรเจกต์ที่ทำให้คอมพิวเตอร์
+            สามารถทำงานร่วมกับมนุษย์ได้อย่างเป็นธรรมชาติ
+            และมีประสิทธิภาพมากขึ้น
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- EDUCATION -->
+
+    <section
+        id="education-th"
+    >
+
+        <h2 class="section-title">
+            การศึกษา
+        </h2>
+
+
+        <div class="card">
+
+
+            <h3>
+
+                มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน
+
+            </h3>
+
+
+            <p class="blue">
+
+                วิทยาเขตสกลนคร
+
+            </p>
+
+
+            <p>
+
+                คณะอุตสาหกรรมและเทคโนโลยี
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                ปริญญาตรี
+                วิศวกรรมศาสตรบัณฑิต
+                สาขาวิศวกรรมคอมพิวเตอร์
+
+            </p>
+
+
+            <p class="muted">
+
+                พ.ศ. 2566 – ปัจจุบัน
+
+            </p>
+
+
+            <p class="muted">
+
+                คาดว่าจะสำเร็จการศึกษา พ.ศ. 2570
+
+            </p>
+
+
+            <p class="muted">
+
+                เกรดเฉลี่ยสะสม 3.22
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- SKILLS -->
+
+    <section
+        id="skills-th"
+    >
+
+        <h2 class="section-title">
+            ทักษะ
+        </h2>
+
+
+        <div class="skills-grid">
+
+
+            <!-- PROGRAMMING -->
+
+            <div class="skill-card">
+
+
+                <h3>
+                    ภาษาโปรแกรม
+                </h3>
+
+
+                <p>
+
+                    Python,
+                    C++,
+                    Dart,
+                    JavaScript,
+                    SQL,
+                    HTML,
+                    CSS
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- DEVELOPMENT -->
+
+            <div class="skill-card">
+
+
+                <h3>
+                    เครื่องมือและการพัฒนา
+                </h3>
+
+
+                <p>
+
+                    API Integration,
+                    API Wrappers,
+                    Docker,
+                    Docker Compose
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- AI -->
+
+            <div class="skill-card">
+
+
+                <h3>
+                    AI และ Computer Vision
+                </h3>
+
+
+                <p>
+
+                    Artificial Intelligence,
+                    AI-based Control,
+                    Computer Vision,
+                    Gesture Recognition
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- CREATIVE -->
+
+            <div class="skill-card">
+
+
+                <h3>
+                    ทักษะด้านงานสร้างสรรค์
+                </h3>
+
+
+                <p>
+
+                    Onshape,
+                    Clip Studio Paint,
+                    Adobe Premiere Pro
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- PROJECTS -->
+
+    <section
+        id="projects-th"
+    >
+
+        <h2 class="section-title">
+            ผลงานและประสบการณ์
+        </h2>
+
+
+
+        <!-- CYBERSECURITY -->
+
+        <div class="project">
+
+
+            <h3>
+                Cybersecurity MOOC
+            </h3>
+
+
+            <p>
+
+                หนึ่งในประสบการณ์การเรียนรู้
+                ด้านเทคนิคที่ผมให้ความสำคัญมากที่สุด
+                คือการเรียน Cybersecurity MOOC
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                การเรียนรู้ครั้งนี้ช่วยให้ผมเข้าใจ
+                แนวคิดด้านความปลอดภัยทางไซเบอร์
+                แนวทางการรักษาความปลอดภัยของระบบ
+                และความสำคัญของการปกป้องข้อมูล
+                และระบบดิจิทัลมากขึ้น
+
+            </p>
+
+
+            <div class="tags">
+
+
+                <span class="tag">
+                    Cybersecurity
+                </span>
+
+
+                <span class="tag">
+                    Security
+                </span>
+
+
+                <span class="tag">
+                    Network
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- VOICE -->
+
+        <div class="project">
+
+
+            <h3>
+                ระบบควบคุมด้วยเสียงโดยใช้ AI
+            </h3>
+
+
+            <p>
+
+                พัฒนาแนวคิดระบบควบคุมที่นำ
+                ปัญญาประดิษฐ์มาใช้ในการรับคำสั่ง
+                เสียงจากผู้ใช้งาน
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                ระบบสามารถนำคำสั่งของผู้ใช้งาน
+                มาวิเคราะห์และเชื่อมโยงกับ
+                การทำงานที่กำหนดไว้ เพื่อให้ผู้ใช้งาน
+                สามารถควบคุมระบบผ่านเสียง
+                ได้อย่างเป็นธรรมชาติ
+
+            </p>
+
+
+            <div class="tags">
+
+
+                <span class="tag">
+                    Artificial Intelligence
+                </span>
+
+
+                <span class="tag">
+                    Voice Control
+                </span>
+
+
+                <span class="tag">
+                    Automation
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- FINGER -->
+
+        <div class="project">
+
+
+            <h3>
+                ระบบควบคุมด้วยนิ้วมือโดยใช้ AI
+            </h3>
+
+
+            <p>
+
+                พัฒนาแนวคิดระบบควบคุมที่ใช้
+                Computer Vision ในการตรวจจับ
+                การเคลื่อนไหวของมือและนิ้ว
+                เพื่อใช้เป็นรูปแบบการควบคุมทางเลือก
+                แทนการใช้ Mouse และ Keyboard
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                แนวคิดดังกล่าวสามารถนำไปต่อยอด
+                กับระบบ Robotics การควบคุมโดรน
+                และระบบ Human-Computer Interaction
+                ที่ต้องการการควบคุมแบบไม่ต้องสัมผัสอุปกรณ์
+
+            </p>
+
+
+            <div class="tags">
+
+
+                <span class="tag">
+                    Computer Vision
+                </span>
+
+
+                <span class="tag">
+                    Gesture Recognition
+                </span>
+
+
+                <span class="tag">
+                    HCI
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- LANGUAGES -->
+
+    <section>
+
+
+        <h2 class="section-title">
+            ภาษา
+        </h2>
+
+
+        <div class="tags">
+
+
+            <span class="tag">
+                ภาษาไทย — ภาษาแม่
+            </span>
+
+
+            <span class="tag">
+                ภาษาอังกฤษ — CEFR A2
+            </span>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- CAREER -->
+
+    <section>
+
+
+        <h2 class="section-title">
+            เป้าหมายในการทำงาน
+        </h2>
+
+
+        <p>
+
+            ผมกำลังมองหาโอกาสในการนำความรู้
+            ที่เรียนมาไปประยุกต์ใช้กับการทำงานจริง
+            โดยเฉพาะด้าน
+
+            <span class="highlight">
+
+                Artificial Intelligence,
+                Cybersecurity,
+                Software Development
+                และ Computer Engineering
+
+            </span>
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            ผมพร้อมที่จะเรียนรู้เทคโนโลยีใหม่ ๆ
+            พัฒนาทักษะทางด้านเทคนิคของตนเอง
+            และมีส่วนร่วมในการพัฒนาโปรเจกต์จริง
+            พร้อมเติบโตไปกับองค์กรในฐานะ
+            วิศวกรคอมพิวเตอร์
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- THANK YOU -->
+
+    <section>
+
+
+        <h2 class="section-title">
+            ขอบคุณ
+        </h2>
+
+
+        <p>
+
+            ขอขอบพระคุณเป็นอย่างสูงที่สละเวลา
+            พิจารณาโปรไฟล์และผลงานของผม
+
+            ผมรู้สึกยินดีเป็นอย่างยิ่งหากมีโอกาส
+            ได้พูดคุยและนำเสนอความสามารถ
+            รวมถึงประสบการณ์ของผมเพิ่มเติม
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            <strong>
+                ขอแสดงความนับถือ
+            </strong>
+
+            <br>
+
+            วัชชิรปกรณ์ มีชัย
+
+        </p>
+
+
+    </section>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    © 2026 Watchirapakorn Meechai
+
+</footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+    /* =====================================================
+       CURRENT LANGUAGE
+    ===================================================== */
+
+    let currentLanguage = "en";
+
+
+
+    /* =====================================================
+       CHANGE LANGUAGE
+    ===================================================== */
+
+    function changeLanguage(language) {
+
+
+        const english =
+            document.getElementById("english");
+
+
+        const thai =
+            document.getElementById("thai");
+
+
+        const enBtn =
+            document.getElementById("enBtn");
+
+
+        const thBtn =
+            document.getElementById("thBtn");
+
+
+
+        currentLanguage =
+            language;
+
+
+
+        /* =================================================
+           ENGLISH
+        ================================================= */
+
+        if (language === "en") {
+
+
+            english.classList.add(
+                "active"
+            );
+
+
+            thai.classList.remove(
+                "active"
+            );
+
+
+            enBtn.classList.add(
+                "active"
+            );
+
+
+            thBtn.classList.remove(
+                "active"
+            );
+
+
+            document.documentElement.lang =
+                "en";
+
+
+            document.title =
+                "Watchirapakorn Meechai | Portfolio";
+
+
+
+            /* Navigation */
+
+            document.getElementById(
+                "navAbout"
+            ).textContent =
+                "About";
+
+
+            document.getElementById(
+                "navEducation"
+            ).textContent =
+                "Education";
+
+
+            document.getElementById(
+                "navSkills"
+            ).textContent =
+                "Skills";
+
+
+            document.getElementById(
+                "navProjects"
+            ).textContent =
+                "Projects";
+
+        }
+
+
+
+        /* =================================================
+           THAI
+        ================================================= */
+
+        else if (language === "th") {
+
+
+            thai.classList.add(
+                "active"
+            );
+
+
+            english.classList.remove(
+                "active"
+            );
+
+
+            thBtn.classList.add(
+                "active"
+            );
+
+
+            enBtn.classList.remove(
+                "active"
+            );
+
+
+            document.documentElement.lang =
+                "th";
+
+
+            document.title =
+                "วัชชิรปกรณ์ มีชัย | Portfolio";
+
+
+
+            /* Navigation */
+
+            document.getElementById(
+                "navAbout"
+            ).textContent =
+                "เกี่ยวกับผม";
+
+
+            document.getElementById(
+                "navEducation"
+            ).textContent =
+                "การศึกษา";
+
+
+            document.getElementById(
+                "navSkills"
+            ).textContent =
+                "ทักษะ";
+
+
+            document.getElementById(
+                "navProjects"
+            ).textContent =
+                "ผลงาน";
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       NAVIGATION FUNCTION
+    ===================================================== */
+
+    function navigateSection(section) {
+
+
+        let targetId;
+
+
+
+        /* =================================================
+           DETERMINE TARGET
+        ================================================= */
+
+        if (currentLanguage === "en") {
+
+
+            targetId =
+                section;
+
+
+        }
+
+        else {
+
+
+            targetId =
+                section + "-th";
+
+        }
+
+
+
+        /* =================================================
+           FIND ELEMENT
+        ================================================= */
+
+        const target =
+            document.getElementById(
+                targetId
+            );
+
+
+
+        /* =================================================
+           SCROLL
+        ================================================= */
+
+        if (target) {
+
+
+            const navbarHeight =
+                70;
+
+
+            const targetPosition =
+
+                target.getBoundingClientRect().top
+
+                +
+
+                window.pageYOffset
+
+                -
+
+                navbarHeight;
+
+
+
+            window.scrollTo({
+
+                top:
+                    targetPosition,
+
+                behavior:
+                    "smooth"
+
+            });
+
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       INITIALIZE
+    ===================================================== */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            changeLanguage("en");
+
+        }
+    );
+
+
+</script>
+
+
+
+</body>
+
+</html>
+```

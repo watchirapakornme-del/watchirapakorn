@@ -1,0 +1,359 @@
+/* การตั้งค่าเริ่มต้นทั่วไป */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f2f0f8; /* สีพื้นหลังม่วงอ่อน/ลาเวนเดอร์ */
+    color: #333;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: #4c42ad;
+    font-weight: 600;
+}
+
+/* 1. แถบเลือกภาษาด้านบนสุด */
+.top-nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.lang-btn {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    transition: background-color 0.2s;
+}
+
+.lang-btn.active {
+    font-weight: 700;
+    background-color: #f8f8f8;
+}
+
+/* 2. คอนเทนเนอร์หลักแบบแบ่งครึ่ง */
+.main-container {
+    display: flex;
+    flex: 1;
+    padding-top: 60px; /* เว้นระยะจากแถบภาษา */
+}
+
+/* 2.1 ส่วนด้านซ้าย */
+.split-left {
+    flex: 1;
+    padding: 60px;
+    /* การสร้างพื้นหลังแบบจุดประ (dotted pattern) ด้วย CSS */
+    background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    position: relative;
+    overflow: hidden; /* ป้องกันไอคอนลอยออกนอกพื้นที่ */
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-content {
+    margin-bottom: 40px;
+}
+
+.platform-subtitle {
+    color: #4c42ad; /* สีม่วงน้ำเงิน */
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.headline {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.headline .highlight {
+    color: #4c42ad; /* เน้นคำว่า "work." สุดท้าย */
+}
+
+.sub-headline {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+/* พื้นที่กราฟิกด้านซ้าย */
+.graphic-area {
+    position: relative;
+    width: 80%;
+    max-width: 380px;
+    margin: 40px auto;
+}
+
+.image-card-container {
+    background-color: white;
+    padding: 12px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+.creator-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+}
+
+/* ป้าย Live */
+.live-tag {
+    background-color: #ff9800; /* สีส้ม */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    position: absolute;
+    top: -12px;
+    left: 20px;
+}
+
+/* ไอคอนลอยตัว (จัดตำแหน่งด้วย position absolute สัมพันธ์กับ .image-card-container) */
+.floating-icon {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    z-index: 2;
+}
+
+.icon-emoji { top: -16px; left: -16px; }
+.icon-user { top: -16px; right: -16px; }
+.icon-fire { bottom: -16px; left: -16px; }
+.icon-heart { bottom: -16px; right: -16px; color: white; background-color: #7e57c2; } /* ไอคอนหัวใจสีม่วง */
+
+/* กล่อง Reach Info */
+.reach-info {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background-color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 10px;
+    color: #666;
+    font-weight: 700;
+    text-align: right;
+    z-index: 1;
+}
+
+.reach-number {
+    color: #333;
+    font-size: 16px;
+    display: block;
+}
+
+.footer-left {
+    margin-top: auto;
+    color: #aaa;
+    font-size: 12px;
+    padding-bottom: 20px;
+}
+
+/* 2.2 ส่วนด้านขวา */
+.split-right {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.signin-card {
+    background-color: white;
+    width: 100%;
+    max-width: 420px;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.lock-icon {
+    font-size: 32px;
+    color: #4c42ad;
+    margin-bottom: 20px;
+}
+
+.signin-header {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.signin-description {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+/* แบบฟอร์ม */
+.input-group {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.input-label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.input-field:focus {
+    border-color: #4c42ad;
+    outline: none;
+}
+
+.input-field::placeholder {
+    color: #ccc;
+}
+
+/* กลุ่มรหัสผ่านพร้อมไอคอนตา */
+.password-group {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(2px); /* ปรับให้ตรงกลางแนวตั้ง */
+    color: #bbb;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* ลิงก์ลืมรหัสผ่าน */
+.forgot-password-link {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    margin-top: -12px;
+    margin-bottom: 40px;
+}
+
+/* ปุ่ม Sign In */
+.signin-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: #4c42ad; /* สีม่วงน้ำเงินหลัก */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-btn:hover {
+    background-color: #3b338a; /* สีเข้มขึ้นเมื่อ hover */
+}
+
+.signin-btn:active {
+    transform: scale(0.98); /* ลูกเล่นเมื่อกดปุ่ม */
+}
+
+.arrow-right {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+/* ข้อมูลลงทะเบียน */
+.register-info {
+    margin-top: 30px;
+    color: #aaa;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.register-info a {
+    color: #4c42ad;
+    font-weight: 600;
+}
+
+/* Footer ด้านขวา */
+.footer-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-right a {
+    color: #aaa;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* เพิ่มการรองรับหน้าจอมือถือ (Responsive design) พื้นฐาน */
+@media (max-width: 1024px) {
+    .main-container {
+        flex-direction: column; /* เปลี่ยนจาก Flex แนวนอนเป็นแนวตั้ง */
+        padding-top: 80px;
+    }
+    
+    .split-left, .split-right {
+        flex: none;
+        width: 100%;
+        padding: 40px 20px;
+        text-align: center;
+    }
+    
+    .headline { font-size: 40px; }
+    .sub-headline { margin-left: auto; margin-right: auto; }
+    
+    .graphic-area { width: 90%; }
+    
+    .signin-card {
+        margin: 0 auto;
+    }
+    
+    .footer-left { position: static; margin-top: 30px; text-align: center;}
+    .footer-right { position: static; margin-top: 20px; justify-content: center;}
+}

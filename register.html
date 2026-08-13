@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ลงทะเบียน (JS)</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .card { border: 1px solid #ccc; padding: 20px; border-radius: 8px; width: 300px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group input { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>สมัครสมาชิก</h2>
+    <form id="registerForm">
+        <div class="form-group">
+            <input type="text" id="username" placeholder="ชื่อผู้ใช้" required>
+        </div>
+        <div class="form-group">
+            <input type="password" id="password" placeholder="รหัสผ่าน" required>
+        </div>
+        <button type="submit">สมัครสมาชิก</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+        e.preventDefault(); // ป้องกันไม่ให้ฟอร์ม Reload หน้าแบบปกติ
+
+        const data = {
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value
+        };
+
+        try {
+            // สมมติว่ายิงไปหา API ลงทะเบียน (เปลี่ยน URL ตาม API ของคุณได้เลย)
+            /* 
+            const response = await fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            */
+
+            // จำลองการทำงานว่าส่งข้อมูลสำเร็จ
+            const isSuccess = true; 
+
+            if (isSuccess) {
+                alert("ลงทะเบียนสำเร็จ!");
+                
+                // --- คำสั่งสำคัญ: สั่งเปลี่ยนหน้ากลับไปที่ index.html ---
+                window.location.href = "index.html"; 
+            } else {
+                alert("เกิดข้อผิดพลาด กรุณาลองใหม่");
+            }
+
+        } catch (error) {
+            console.error("Error:", error);
+            alert("ไม่สามารถเชื่อมต่อระบบได้");
+        }
+    });
+    
+    document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.toggle-password').forEach(icon => {
+        icon.addEventListener('click', function() {
+            const input = this.previousElementSibling;
+            if (input && input.tagName === 'INPUT') {
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+            }
+        });
+    });
+});
+</script>
+ 
+</body>
+</html>

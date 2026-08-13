@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSW KOL PLATFORM - KOL Registration</title>
+    <link rel="icon" type="image/svg+xml" href="Asset%20File/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { height: 100vh; width: 100vw; display: flex; background-color: #f5f3fb; color: #1a1a2e; overflow-x: hidden; position: relative; }
+
+        /* Top Header Switcher */
+        .top-header { position: absolute; top: 24px; right: 32px; z-index: 100; }
+        .lang-switcher { display: flex; align-items: center; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(8px); padding: 4px; border-radius: 20px; border: 1px solid rgba(220, 215, 235, 0.8); }
+        .lang-btn { border: none; background: transparent; padding: 6px 14px; border-radius: 16px; font-size: 13px; font-weight: 600; color: #71718a; cursor: pointer; transition: all 0.2s; }
+        .lang-btn.active { background: #ffffff; color: #1a1a2e; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+
+        /* Left Section */
+        .left-section { flex: 1; height: 100%; padding: 60px 80px; display: flex; flex-direction: column; justify-content: space-between; position: relative; background-image: radial-gradient(#d3cbe8 1.5px, transparent 1.5px); background-size: 24px 24px; background-color: #f4f1fa; }
+        .brand-subtitle { color: #5c38ee; font-size: 13px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px; }
+        .hero-title { font-size: 52px; font-weight: 800; line-height: 1.1; color: #121221; letter-spacing: -1.5px; margin-bottom: 16px; }
+        .hero-title span { color: #5c38ee; }
+        .hero-description { color: #6b6b80; font-size: 14px; font-weight: 500; line-height: 1.5; max-width: 420px; }
+        .visual-container { position: relative; width: 300px; margin: 0 auto; align-self: center; }
+        .main-card { background: #ffffff; padding: 12px; border-radius: 28px; box-shadow: 0 20px 40px -10px rgba(92, 56, 238, 0.12); position: relative; }
+        .creator-img { width: 100%; height: 320px; object-fit: cover; border-radius: 20px; display: block; }
+        .live-badge { position: absolute; top: 24px; right: 24px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; color: #1a1a2e; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .live-dot { width: 8px; height: 8px; background-color: #ff3b30; border-radius: 50%; }
+        .floating-badge { position: absolute; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 24px rgba(0,0,0,0.1); z-index: 10; }
+        .badge-emoji-1 { width: 40px; height: 40px; top: 120px; left: -20px; font-size: 18px; }
+        .badge-emoji-2 { width: 36px; height: 36px; bottom: 40px; left: -15px; font-size: 16px; }
+        .badge-heart { width: 40px; height: 40px; right: -18px; top: 200px; background: #6240ed; color: white; font-size: 16px; }
+        .reach-badge { position: absolute; bottom: 24px; right: 24px; background: #ffffff; padding: 8px 16px; border-radius: 14px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); text-align: left; }
+        .reach-number { font-size: 18px; font-weight: 800; color: #1a1a2e; line-height: 1; }
+        .reach-label { font-size: 9px; font-weight: 700; color: #8c8c9e; letter-spacing: 0.5px; margin-top: 2px; }
+        .left-footer { color: #a0a0b2; font-size: 12px; font-weight: 500; }
+
+        /* Right Section */
+        .right-section { flex: 1; height: 100%; background-color: #ede9f7; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px; overflow-y: auto; }
+        .form-wrapper { width: 100%; max-width: 460px; text-align: center; }
+        .form-header-title { font-size: 24px; font-weight: 800; color: #121221; margin-bottom: 6px; }
+        .step-subtitle { font-size: 13px; font-weight: 600; color: #71718a; margin-bottom: 16px; }
+        
+        .progress-bar-container { display: flex; gap: 8px; width: 100%; margin-bottom: 8px; }
+        .progress-step-bar { flex: 1; height: 4px; background: #e0daee; border-radius: 4px; transition: all 0.3s ease; }
+        .progress-step-bar.active { background: #5c38ee; }
+        .optional-notice { font-size: 12px; color: #8c8c9e; margin-bottom: 24px; font-weight: 500; }
+
+        .form-card { background: #ffffff; width: 100%; padding: 36px 32px; border-radius: 24px; box-shadow: 0 20px 40px rgba(92, 56, 238, 0.06); text-align: left; }
+        .step-content { display: none; }
+        .step-content.active { display: block; }
+
+        .form-row { display: flex; gap: 12px; }
+        .form-row .input-group { flex: 1; }
+        .input-group { margin-bottom: 16px; }
+        .input-label { display: block; font-size: 12px; font-weight: 600; color: #3b3b4f; margin-bottom: 6px; }
+        .input-wrapper { position: relative; display: flex; align-items: center; }
+        .field-icon { position: absolute; left: 14px; color: #9e9eb0; pointer-events: none; }
+        .toggle-password { position: absolute; right: 14px; color: #9e9eb0; cursor: pointer; transition: color 0.2s; }
+        .toggle-password:hover { color: #5c38ee; }
+        .form-control { width: 100%; padding: 12px 14px 12px 42px; border: 1px solid #e4e1f0; border-radius: 12px; font-size: 13px; color: #1a1a2e; background: #ffffff; outline: none; transition: all 0.2s; }
+        .form-control:focus { border-color: #5c38ee; box-shadow: 0 0 0 3px rgba(92, 56, 238, 0.1); }
+        textarea.form-control { padding: 12px 14px; height: 80px; resize: none; }
+
+        .chips-group { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+        .chip-btn { padding: 10px 20px; border: 1px solid #e4e1f0; border-radius: 12px; background: #ffffff; font-size: 13px; font-weight: 600; color: #3b3b4f; cursor: pointer; transition: all 0.2s; }
+        .chip-btn.active, .chip-btn:hover { border-color: #5c38ee; color: #5c38ee; background: #f5f2ff; }
+
+        .platform-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+        .platform-item { background: #fbfaff; border: 1px solid #e4e1f0; border-radius: 14px; padding: 12px 8px; text-align: center; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .platform-item:hover, .platform-item.active { border-color: #5c38ee; background: #f5f2ff; transform: translateY(-2px); }
+        .platform-item img, .platform-item svg { width: 24px; height: 24px; }
+        .platform-name { font-size: 11px; font-weight: 600; color: #3b3b4f; }
+        .empty-platform-box { border: 1px dashed #dcd7eb; border-radius: 12px; padding: 16px; text-align: center; color: #8c8c9e; font-size: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+        .info-notice { background: #f8f6fe; border: 1px solid #e6e0fa; border-radius: 12px; padding: 12px 14px; font-size: 11px; color: #5c38ee; display: flex; gap: 10px; align-items: flex-start; margin-bottom: 16px; line-height: 1.4; }
+
+        .btn-group { display: flex; gap: 10px; margin-top: 24px; }
+        .btn-action { flex: 1; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .btn-secondary { background: #ffffff; border: 1px solid #e4e1f0; color: #55556a; }
+        .btn-secondary:hover { background: #f8f7fc; }
+        .btn-primary { background: #5c38ee; border: none; color: #ffffff; box-shadow: 0 8px 18px rgba(92, 56, 238, 0.25); flex: 2; }
+        .btn-primary:hover { background: #4a28d6; transform: translateY(-1px); }
+
+        .bottom-link-wrapper { margin-top: 20px; font-size: 12px; color: #8c8c9e; text-align: center; }
+        .bottom-link-wrapper a { color: #5c38ee; font-weight: 700; text-decoration: none; }
+        .bottom-link-wrapper a:hover { text-decoration: underline; }
+
+        @media (max-width: 900px) { body { flex-direction: column; overflow-y: auto; } .left-section, .right-section { width: 100%; flex: none; padding: 30px 20px; } }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="lang-switcher">
+            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="th" onclick="setLanguage('th')">ไทย</button>
+        </div>
+    </header>
+
+    <section class="left-section">
+        <div class="hero-text-block">
+            <p class="brand-subtitle">JSW KOL PLATFORM</p>
+            <h1 class="hero-title" data-en="Make creator<br>work <span>work.</span>" data-th="ทำให้งานของ<br>ครีเอเตอร์ <span>เวิร์กจริง</span>">ทำให้งานของ<br>ครีเอเตอร์ <span>เวิร์กจริง</span></h1>
+            <p class="hero-description" data-en="A simpler way to manage campaigns, creators, approvals, and results." data-th="วิธีที่ง่ายกว่าในการจัดการแคมเปญ ครีเอเตอร์ การอนุมัติ และผลลัพธ์">วิธีที่ง่ายกว่าในการจัดการแคมเปญ ครีเอเตอร์ การอนุมัติ และผลลัพธ์</p>
+        </div>
+
+        <div class="visual-container">
+            <div class="main-card">
+                <img src="Asset%20File/influ.JPG" alt="influencer" class="creator-img">
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    <span data-en="Live creator" data-th="ครีเอเตอร์ ไลฟ์สด">ครีเอเตอร์ ไลฟ์สด</span>
+                </div>
+                <div class="reach-badge">
+                    <div class="reach-number">4.8M</div>
+                    <div class="reach-label" data-en="TOTAL REACH" data-th="การเข้าถึงทั้งหมด">การเข้าถึงทั้งหมด</div>
+                </div>
+            </div>
+            <div class="floating-badge badge-emoji-1">😍</div>
+            <div class="floating-badge badge-emoji-2">🔥</div>
+            <div class="floating-badge badge-heart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+        </div>
+
+        <div class="left-footer" data-en="© JSW All rights reserved." data-th="© JSW สงวนลิขสิทธิ์">
+            © JSW สงวนลิขสิทธิ์
+        </div>
+    </section>
+
+    <section class="right-section">
+        <div class="form-wrapper">
+            <h2 class="form-header-title" data-en="KOL Registration" data-th="ลงทะเบียน KOL / อินฟลูเอนเซอร์">ลงทะเบียน KOL / อินฟลูเอนเซอร์</h2>
+            <div class="step-subtitle" id="step-title-text">ขั้นตอนที่ 1 จาก 6 · ข้อมูลส่วนตัว</div>
+
+            <div class="progress-bar-container">
+                <div class="progress-step-bar active"></div>
+                <div class="progress-step-bar"></div>
+                <div class="progress-step-bar"></div>
+                <div class="progress-step-bar"></div>
+                <div class="progress-step-bar"></div>
+                <div class="progress-step-bar"></div>
+            </div>
+            <p class="optional-notice" id="optional-text" style="visibility: hidden;" data-en="Optional — you can add this later in your profile." data-th="ไม่บังคับ — สามารถเพิ่มภายหลังในโปรไฟล์ของคุณได้">ไม่บังคับ — สามารถเพิ่มภายหลังในโปรไฟล์ของคุณได้</p>
+
+            <div class="form-card">
+                <form id="kolForm" onsubmit="return false;">
+                    
+                    <!-- STEP 1: Personal Data -->
+                    <div class="step-content active" data-step="1">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label class="input-label" data-en="First name" data-th="ชื่อ">ชื่อ</label>
+                                <div class="input-wrapper">
+                                    <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                    <input type="text" id="kol-firstname" class="form-control" placeholder="ชื่อ" data-en-ph="First name" data-th-ph="ชื่อ" required>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label" data-en="Last name" data-th="นามสกุล">นามสกุล</label>
+                                <div class="input-wrapper">
+                                    <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                    <input type="text" id="kol-lastname" class="form-control" placeholder="นามสกุล" data-en-ph="Last name" data-th-ph="นามสกุล" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" data-en="Phone number" data-th="เบอร์โทรศัพท์">เบอร์โทรศัพท์</label>
+                            <div class="input-wrapper">
+                                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                <input type="tel" id="kol-phone" class="form-control" placeholder="08x-xxx-xxxx" data-en-ph="08x-xxx-xxxx" data-th-ph="08x-xxx-xxxx" required>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" data-en="Line ID (optional)" data-th="Line ID (ไม่บังคับ)">Line ID (ไม่บังคับ)</label>
+                            <div class="input-wrapper">
+                                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path></svg>
+                                <input type="text" id="kol-lineid" class="form-control" placeholder="LINE ID" data-en-ph="LINE ID" data-th-ph="LINE ID">
+                            </div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn-action btn-primary" onclick="validateAndNext(1)" style="width:100%;">
+                                <span data-en="Continue" data-th="ดำเนินการต่อ">ดำเนินการต่อ</span> &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Work Preferences -->
+                    <div class="step-content" data-step="2">
+                        <div class="input-group">
+                            <label class="input-label" data-en="Expertise" data-th="ความถนัด/ความเชี่ยวชาญ">ความถนัด/ความเชี่ยวชาญ</label>
+                            <div class="chips-group">
+                                <button type="button" class="chip-btn" onclick="toggleChip(this)">Video</button>
+                                <button type="button" class="chip-btn" onclick="toggleChip(this)">Photo</button>
+                                <button type="button" class="chip-btn" onclick="toggleChip(this)">Live Streaming</button>
+                            </div>
+                            <span style="font-size: 11px; color: #8c8c9e; margin-top: 10px; display: block;" data-en="Select all that apply" data-th="เลือกได้มากกว่า 1 ข้อ">เลือกได้มากกว่า 1 ข้อ</span>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn-action btn-secondary" onclick="prevStep()" data-en="Back" data-th="ย้อนกลับ">ย้อนกลับ</button>
+                            <button type="button" class="btn-action btn-secondary" onclick="nextStep()" data-en="Skip" data-th="ข้าม">ข้าม</button>
+                            <button type="button" class="btn-action btn-primary" onclick="nextStep()">
+                                <span data-en="Continue" data-th="ดำเนินการต่อ">ดำเนินการต่อ</span> &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Channels / Platforms -->
+                    <div class="step-content" data-step="3">
+                        <label class="input-label" data-en="Add a platform" data-th="เพิ่มแพลตฟอร์มของคุณ">เพิ่มแพลตฟอร์มของคุณ</label>
+                        <div class="platform-grid">
+                            <div class="platform-item" onclick="togglePlatform(this)">
+                                <svg fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                <span class="platform-name">Facebook</span>
+                            </div>
+                            <div class="platform-item" onclick="togglePlatform(this)">
+                                <svg fill="#E4405F" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                <span class="platform-name">Instagram</span>
+                            </div>
+                            <div class="platform-item" onclick="togglePlatform(this)">
+                                <svg fill="#000000" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.31 1.56-1.28 2.55.02.82.42 1.61 1.08 2.11.8.63 1.89.81 2.87.52 1.05-.29 1.89-1.18 2.1-2.25.12-.66.12-1.33.12-2V.02z"/></svg>
+                                <span class="platform-name">TikTok</span>
+                            </div>
+                            <div class="platform-item" onclick="togglePlatform(this)">
+                                <svg fill="#FF0000" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                <span class="platform-name">YouTube</span>
+                            </div>
+                            <div class="platform-item" onclick="togglePlatform(this)">
+                                <svg fill="#000000" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                <span class="platform-name">X</span>
+                            </div>
+                            <div class="platform-item" onclick="togglePlatform(this)">
+                                <span style="font-size: 18px; font-weight: 800; color:#ffb700;">L</span>
+                                <span class="platform-name">Lemon8</span>
+                            </div>
+                            <div class="platform-item" onclick="togglePlatform(this)">
+                                <svg fill="#EE4D2D" viewBox="0 0 24 24"><path d="M19.3 6.9h-2.5C16.3 3 14.2.8 12 .8S7.7 3 7.2 6.9H4.7C3.2 6.9 2 8.1 2 9.6l1.2 11.2c.1 1.3 1.2 2.4 2.5 2.4h12.6c1.3 0 2.4-1.1 2.5-2.4L22 9.6c0-1.5-1.2-2.7-2.7-2.7zm-7.3-4.5c1.3 0 2.7 1.8 3.2 4.5H8.8c.5-2.7 1.9-4.5 3.2-4.5z"/></svg>
+                                <span class="platform-name">Shopee</span>
+                            </div>
+                        </div>
+
+                        <div class="empty-platform-box">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            <span data-en="No platforms yet — pick one above to get started." data-th="ยังไม่ได้เลือกแพลตฟอร์ม — คลิกเลือกด้านบนเพื่อเริ่ม">ยังไม่ได้เลือกแพลตฟอร์ม — คลิกเลือกด้านบนเพื่อเริ่ม</span>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn-action btn-secondary" onclick="prevStep()" data-en="Back" data-th="ย้อนกลับ">ย้อนกลับ</button>
+                            <button type="button" class="btn-action btn-secondary" onclick="nextStep()" data-en="Skip" data-th="ข้าม">ข้าม</button>
+                            <button type="button" class="btn-action btn-primary" onclick="nextStep()">
+                                <span data-en="Continue" data-th="ดำเนินการต่อ">ดำเนินการต่อ</span> &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Address -->
+                    <div class="step-content" data-step="4">
+                        <div class="input-group">
+                            <label class="input-label" data-en="Street address" data-th="ที่อยู่">ที่อยู่</label>
+                            <textarea id="kol-address" class="form-control" placeholder="บ้านเลขที่, หมู่บ้าน, ซอย, ถนน" data-en-ph="House no., village, soi, road" data-th-ph="บ้านเลขที่, หมู่บ้าน, ซอย, ถนน"></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label class="input-label" data-en="Postal code" data-th="รหัสไปรษณีย์">รหัสไปรษณีย์</label>
+                                <div class="input-wrapper">
+                                    <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    <input type="text" id="kol-postal" class="form-control" placeholder="10110" data-en-ph="10110" data-th-ph="10110">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label" data-en="Sub-district" data-th="แขวง / ตำบล">แขวง / ตำบล</label>
+                                <div class="input-wrapper">
+                                    <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                    <input type="text" id="kol-subdistrict" class="form-control" placeholder="กรอกรหัสไปรษณีย์ก่อน" data-en-ph="Enter postal code first" data-th-ph="กรอกรหัสไปรษณีย์ก่อน">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label class="input-label" data-en="District" data-th="เขต / อำเภอ">เขต / อำเภอ</label>
+                                <div class="input-wrapper">
+                                    <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                    <input type="text" id="kol-district" class="form-control" placeholder="ดึงข้อมูลอัตโนมัติ" data-en-ph="Auto-filled from postal" data-th-ph="ดึงข้อมูลอัตโนมัติ">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label" data-en="Province" data-th="จังหวัด">จังหวัด</label>
+                                <div class="input-wrapper">
+                                    <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M6 21V11M10 21V11M14 21V11M18 21V11M12 3L2 7h20L12 3z"></path></svg>
+                                    <input type="text" id="kol-province" class="form-control" placeholder="ดึงข้อมูลอัตโนมัติ" data-en-ph="Auto-filled from postal" data-th-ph="ดึงข้อมูลอัตโนมัติ">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn-action btn-secondary" onclick="prevStep()" data-en="Back" data-th="ย้อนกลับ">ย้อนกลับ</button>
+                            <button type="button" class="btn-action btn-secondary" onclick="nextStep()" data-en="Skip" data-th="ข้าม">ข้าม</button>
+                            <button type="button" class="btn-action btn-primary" onclick="nextStep()">
+                                <span data-en="Continue" data-th="ดำเนินการต่อ">ดำเนินการต่อ</span> &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5: Payment Information -->
+                    <div class="step-content" data-step="5">
+                        <div class="input-group">
+                            <label class="input-label" data-en="Bank" data-th="ธนาคาร">ธนาคาร</label>
+                            <div class="input-wrapper">
+                                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                                <input type="text" id="kol-bank" class="form-control" placeholder="เลือกธนาคาร" data-en-ph="Select bank" data-th-ph="เลือกธนาคาร">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" data-en="Account name" data-th="ชื่อบัญชี">ชื่อบัญชี</label>
+                            <div class="input-wrapper">
+                                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                <input type="text" id="kol-account-name" class="form-control" placeholder="ชื่อเจ้าของบัญชี" data-en-ph="Account holder name" data-th-ph="ชื่อเจ้าของบัญชี">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" data-en="Account number" data-th="เลขที่บัญชี">เลขที่บัญชี</label>
+                            <div class="input-wrapper">
+                                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                                <input type="text" id="kol-account-number" class="form-control" placeholder="เลขที่บัญชี" data-en-ph="Account number" data-th-ph="เลขที่บัญชี">
+                            </div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn-action btn-secondary" onclick="prevStep()" data-en="Back" data-th="ย้อนกลับ">ย้อนกลับ</button>
+                            <button type="button" class="btn-action btn-secondary" onclick="nextStep()" data-en="Skip" data-th="ข้าม">ข้าม</button>
+                            <button type="button" class="btn-action btn-primary" onclick="nextStep()">
+                                <span data-en="Continue" data-th="ดำเนินการต่อ">ดำเนินการต่อ</span> &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 6: Login details -->
+                    <div class="step-content" data-step="6">
+                        <div class="input-group">
+                            <label class="input-label" data-en="Email address" data-th="อีเมล">อีเมล</label>
+                            <div class="input-wrapper">
+                                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                <input type="email" id="kol-email" class="form-control" placeholder="name@example.com" data-en-ph="name@example.com" data-th-ph="name@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" data-en="Password" data-th="รหัสผ่าน">รหัสผ่าน</label>
+                            <div class="input-wrapper">
+                                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                <input type="password" id="kol-password" class="form-control" placeholder="สร้างรหัสผ่าน" data-en-ph="Create a password" data-th-ph="สร้างรหัสผ่าน" required minlength="8">
+                                <svg class="toggle-password" onclick="togglePasswordVisibility(this)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </div>
+                            <span style="font-size: 11px; color: #8c8c9e; margin-top: 4px; display: block;" data-en="At least 8 characters" data-th="อย่างน้อย 8 ตัวอักษร">อย่างน้อย 8 ตัวอักษร</span>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" data-en="Confirm password" data-th="ยืนยันรหัสผ่าน">ยืนยันรหัสผ่าน</label>
+                            <div class="input-wrapper">
+                                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                <input type="password" id="kol-confirm-password" class="form-control" placeholder="กรอกรหัสผ่านอีกครั้ง" data-en-ph="Re-enter your password" data-th-ph="กรอกรหัสผ่านอีกครั้ง" required minlength="8">
+                                <svg class="toggle-password" onclick="togglePasswordVisibility(this)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </div>
+                        </div>
+
+                        <div class="info-notice">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <span data-en="Registrations are reviewed by the marketing team before your profile is activated." data-th="การลงทะเบียนจะได้รับการตรวจสอบโดยทีมการตลาดก่อนเปิดใช้งานโปรไฟล์ของคุณ">การลงทะเบียนจะได้รับการตรวจสอบโดยทีมการตลาดก่อนเปิดใช้งานโปรไฟล์ของคุณ</span>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn-action btn-secondary" onclick="prevStep()" data-en="Back" data-th="ย้อนกลับ">ย้อนกลับ</button>
+                            <button type="button" class="btn-action btn-primary" onclick="submitForm()">
+                                <span data-en="Submit registration" data-th="ส่งข้อมูลลงทะเบียน">ส่งข้อมูลลงทะเบียน</span> &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="bottom-link-wrapper">
+                <span data-en="Already have an account?" data-th="มีบัญชีอยู่แล้ว?">มีบัญชีอยู่แล้ว?</span> 
+                <a href="index.html" data-en="Sign in" data-th="เข้าสู่ระบบ">เข้าสู่ระบบ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- เรียกใช้สคริปต์หลัก -->
+    <script src="script.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
+
+        const stepTitles = {
+            en: [
+                "Step 1 of 6 · Personal data",
+                "Step 2 of 6 · Work preferences",
+                "Step 3 of 6 · Channels",
+                "Step 4 of 6 · Address",
+                "Step 5 of 6 · Payment information",
+                "Step 6 of 6 · Login details"
+            ],
+            th: [
+                "ขั้นตอนที่ 1 จาก 6 · ข้อมูลส่วนตัว",
+                "ขั้นตอนที่ 2 จาก 6 · รูปแบบงานที่ถนัด",
+                "ขั้นตอนที่ 3 จาก 6 · แพลตฟอร์ม/ช่องทาง",
+                "ขั้นตอนที่ 4 จาก 6 · ที่อยู่",
+                "ขั้นตอนที่ 5 จาก 6 · ข้อมูลการชำระเงิน",
+                "ขั้นตอนที่ 6 จาก 6 · ข้อมูลเข้าสู่ระบบ"
+            ]
+        };
+
+        function togglePasswordVisibility(iconEl) {
+            const wrapper = iconEl.closest('.input-wrapper');
+            const input = wrapper.querySelector('input');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                iconEl.style.color = '#5c38ee';
+            } else {
+                input.type = 'password';
+                iconEl.style.color = '#9e9eb0';
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateStepUI(getCurrentLang());
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepUI(getCurrentLang());
+            }
+        }
+
+        function validateAndNext(step) {
+            if (step === 1) {
+                const fname = document.getElementById('kol-firstname');
+                const lname = document.getElementById('kol-lastname');
+                const phone = document.getElementById('kol-phone');
+
+                if (!fname.value.trim() || !lname.value.trim() || !phone.value.trim()) {
+                    alert(getCurrentLang() === 'en' ? 'Please fill in all required fields.' : 'กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน');
+                    return;
+                }
+            }
+            nextStep();
+        }
+
+        async function submitForm() {
+            const email = document.getElementById('kol-email')?.value || '';
+            const pass = document.getElementById('kol-password')?.value || '';
+            const confirmPass = document.getElementById('kol-confirm-password')?.value || '';
+
+            if (!email.trim() || !pass || !confirmPass) {
+                alert(getCurrentLang() === 'en' ? 'Please fill in all required fields.' : 'กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน');
+                return;
+            }
+
+            if (pass !== confirmPass) {
+                alert(getCurrentLang() === 'en' ? 'Passwords do not match.' : 'รหัสผ่านไม่ตรงกัน');
+                return;
+            }
+
+            const formData = {
+                firstName: document.getElementById('kol-firstname')?.value || '',
+                lastName: document.getElementById('kol-lastname')?.value || '',
+                phone: document.getElementById('kol-phone')?.value || '',
+                lineId: document.getElementById('kol-lineid')?.value || '',
+                expertise: Array.from(document.querySelectorAll('.chips-group .chip-btn.active')).map(btn => btn.innerText.trim()),
+                platforms: Array.from(document.querySelectorAll('.platform-grid .platform-item.active .platform-name')).map(span => span.innerText.trim()),
+                address: document.getElementById('kol-address')?.value || '',
+                postalCode: document.getElementById('kol-postal')?.value || '',
+                subDistrict: document.getElementById('kol-subdistrict')?.value || '',
+                district: document.getElementById('kol-district')?.value || '',
+                province: document.getElementById('kol-province')?.value || '',
+                bankName: document.getElementById('kol-bank')?.value || '',
+                accountName: document.getElementById('kol-account-name')?.value || '',
+                accountNumber: document.getElementById('kol-account-number')?.value || '',
+                email: email,
+                password: pass
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/api/register-kol', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert(getCurrentLang() === 'en' ? 'Registration submitted successfully!' : 'ลงทะเบียน KOL เรียบร้อยแล้ว!');
+                    window.location.href = 'index.html';
+                } else {
+                    alert((getCurrentLang() === 'en' ? 'Error: ' : 'เกิดข้อผิดพลาด: ') + result.message + (result.error ? '\n\n[Detail] ' + result.error : ''));
+                }
+            } catch (err) {
+                alert(getCurrentLang() === 'en' ? 'Cannot connect to server.' : 'ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้');
+            }
+        }
+
+        function updateStepUI(lang) {
+            if (!lang) lang = getCurrentLang();
+
+            document.querySelectorAll('.step-content').forEach(el => {
+                el.classList.remove('active');
+                if (parseInt(el.getAttribute('data-step')) === currentStep) {
+                    el.classList.add('active');
+                }
+            });
+
+            const bars = document.querySelectorAll('.progress-step-bar');
+            bars.forEach((bar, index) => {
+                if (index < currentStep) {
+                    bar.classList.add('active');
+                } else {
+                    bar.classList.remove('active');
+                }
+            });
+
+            const stepTitleEl = document.getElementById('step-title-text');
+            if (stepTitleEl && stepTitles[lang]) {
+                stepTitleEl.innerText = stepTitles[lang][currentStep - 1];
+            }
+
+            const optionalText = document.getElementById('optional-text');
+            if (optionalText) {
+                optionalText.style.visibility = (currentStep >= 2 && currentStep <= 5) ? 'visible' : 'hidden';
+            }
+        }
+
+        function toggleChip(btn) { btn.classList.toggle('active'); }
+        function togglePlatform(el) { el.classList.toggle('active'); }
+    </script>
+</body>
+</html>
