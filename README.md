@@ -16,7 +16,7 @@
 
  โดยการพิมส์ npm install ลงpowershell ที่เลือกโฟล์เดอร์โปรเเกรมอยู่
  
- หลังจากพิมส์ npm install ยืนยันเเล้ว 
+ หลังจากพิมส์  npm install ยืนยันเเล้ว 
  
  อยากใช้งานโปรเเกรม ให้พิมส์ node server.js เเละมันจะขึ้นว่า
  🚀 Server running on http://localhost:5000
