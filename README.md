@@ -18,7 +18,7 @@
  
  หลังจากพิมส์  npm install ยืนยันเเล้ว 
  
- อยากใช้งานโปรเเกรม ให้พิมส์ node server.js เเละมันจะขึ้นว่า
+ อยากใช้งานโปรเเกรม ให้พิมส์ต่อว่า node server.js เเละมันจะขึ้นว่า
  
  🚀 Server running on http://localhost:5000
  
