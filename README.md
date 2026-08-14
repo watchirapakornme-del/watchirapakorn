@@ -4,14 +4,16 @@
 
 ทำการพิมส์ cd Drive:\folder
 
-สุดท้ายทำการวาง git clone https://github.com/watchirapakornme-del/watchirapakorn.git 
+เเละทำการคัดลอก git clone https://github.com/watchirapakornme-del/watchirapakorn.git 
 
 อย่าพึ่งปิดpowershell
 
 
 2.เข้าไฟล์ไปตำเเเหน่งที่ตัดตั้งเเล้ว ลบ.env.example ให้เหลือเเค้คำว่า.env (คำเตือนไม่ว่าจะเหตุผลอะไรก็โปรดอย่านำไฟล์นี้ออกสู่สาธารณะ) 
 
+
 3.ทำการติดตั้ง npm 
+
  โดยการพิมส์ npm install ลงpowershell ที่เลือกโฟล์เดอร์โปรเเกรมอยู่
  
  หลังจากพิมส์ npm instal ยืนยันเเล้ว 
