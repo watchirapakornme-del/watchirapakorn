@@ -19,6 +19,7 @@
  หลังจากพิมส์  npm install ยืนยันเเล้ว 
  
  อยากใช้งานโปรเเกรม ให้พิมส์ node server.js เเละมันจะขึ้นว่า
+ 
  🚀 Server running on http://localhost:5000
  
 ✅ เชื่อมต่อฐานข้อมูล PostgreSQL สำเร็จ!
