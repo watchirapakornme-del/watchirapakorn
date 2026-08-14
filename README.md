@@ -30,4 +30,4 @@
 
  วิธีทดสอบไฟล์ ไปยังไฟล์โปรเเกรมเเละหาไฟล์ชื่อindex.html อย่างเช่น F:\test\index.html เเละนำไปวางที่เว็ปไซต์
 
-ตอนlogin หริอ register เจอ wants to access other apps and services on this device. ขึ้นไม่ต้องตกใจ ให้Allow
+ตอนlogin หริอ register ขึ้น wants to access other apps and services on this device. ไม่ต้องตกใจ ให้Allow
