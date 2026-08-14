@@ -453,9 +453,22 @@
                 const fname = document.getElementById('kol-firstname');
                 const lname = document.getElementById('kol-lastname');
                 const phone = document.getElementById('kol-phone');
+                const nameRegex = /^[A-Za-zก-๙\s]{2,50}$/;
+                const phoneDigits = phone.value.replace(/[\s-]/g, '');
+                const phoneRegex = /^0[0-9]{8,9}$/;
 
                 if (!fname.value.trim() || !lname.value.trim() || !phone.value.trim()) {
                     alert(getCurrentLang() === 'en' ? 'Please fill in all required fields.' : 'กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน');
+                    return;
+                }
+
+                if (!nameRegex.test(fname.value.trim()) || !nameRegex.test(lname.value.trim())) {
+                    alert(getCurrentLang() === 'en' ? 'Please enter a valid name (letters only, at least 2 characters).' : 'กรุณากรอกชื่อ-นามสกุลให้ถูกต้อง (ตัวอักษรเท่านั้น อย่างน้อย 2 ตัว)');
+                    return;
+                }
+
+                if (!phoneRegex.test(phoneDigits)) {
+                    alert(getCurrentLang() === 'en' ? 'Please enter a valid Thai phone number (9-10 digits, starting with 0).' : 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (ตัวเลข 9-10 หลัก ขึ้นต้นด้วย 0)');
                     return;
                 }
             }
@@ -469,6 +482,17 @@
 
             if (!email.trim() || !pass || !confirmPass) {
                 alert(getCurrentLang() === 'en' ? 'Please fill in all required fields.' : 'กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.trim())) {
+                alert(getCurrentLang() === 'en' ? 'Please enter a valid email address.' : 'กรุณากรอกอีเมลให้ถูกต้อง');
+                return;
+            }
+
+            if (pass.length < 8) {
+                alert(getCurrentLang() === 'en' ? 'Password must be at least 8 characters.' : 'รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร');
                 return;
             }
 
